@@ -257,6 +257,28 @@ class LLaVATrainer(Trainer):
         else:
             super(LLaVATrainer, self)._save_checkpoint(model, trial, metrics)
 
+        # Adapter-only saves omit buffers. Keep an explicit statistics sidecar
+        # for periodic checkpoints, in addition to DeepSpeed's persistent buffers.
+        from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
+        from videollava.model.task_anchors import task_anchor_state_dict
+        output_dir = os.path.join(self._get_output_dir(trial=trial),
+                                  f"{PREFIX_CHECKPOINT_DIR}-{self.state.global_step}")
+        if self.args.should_save:
+            os.makedirs(output_dir, exist_ok=True)
+            torch.save(task_anchor_state_dict(self.model),
+                       os.path.join(output_dir, "task_anchors.bin"))
+
+    def _load_optimizer_and_scheduler(self, checkpoint):
+        super()._load_optimizer_and_scheduler(checkpoint)
+        # Trainer calls this after model/DeepSpeed checkpoint restoration.
+        if checkpoint is not None:
+            path = os.path.join(checkpoint, "task_anchors.bin")
+            if os.path.isfile(path):
+                state = torch.load(path, map_location="cpu")
+                result = self.model.load_state_dict(state, strict=False)
+                if result.unexpected_keys:
+                    raise ValueError(f"Unrecognized task statistics: {result.unexpected_keys}")
+
     def _save(self, output_dir: Optional[str] = None, state_dict=None):
         if getattr(self.args, 'tune_mm_mlp_adapter', False):
             pass

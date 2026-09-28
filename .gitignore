@@ -61,3 +61,8 @@ ckpt/
 
 # --- Nested git dirs (vendored repos) ---
 **/.git/
+
+# Local HiDe setup caches and downloaded weights
+/.local_runtime/
+/models/
+/task_anchors/

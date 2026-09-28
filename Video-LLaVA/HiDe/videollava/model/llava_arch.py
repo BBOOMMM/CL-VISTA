@@ -19,6 +19,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import torch.nn.functional as F
+from .task_anchors import update_task_anchors
 
 from .multimodal_encoder.builder import build_image_tower, build_video_tower, build_text_tower
 from .multimodal_projector.builder import build_vision_projector
@@ -278,18 +279,7 @@ class LlavaMetaForCausalLM(ABC):
         text_guide_features = text_tower(clip_text_inputs)
 
         if self.training:
-            current_image_features = clip_video_features  # [batch_size, feature_dim]
-            current_text_features = text_guide_features  # [batch_size, feature_dim]
-            task_id = self.cur_task
-
-            image_sum = self.image_anchors[task_id] * self.image_boundary[task_id] + current_image_features.sum(dim=0)
-            text_sum = self.text_anchors[task_id] * self.text_boundary[task_id] + current_text_features.sum(dim=0)
-
-            self.image_boundary[task_id].data += current_image_features.shape[0]
-            self.text_boundary[task_id].data += current_text_features.shape[0]
-
-            self.image_anchors[task_id] = image_sum / self.image_boundary[task_id]
-            self.text_anchors[task_id] = text_sum / self.text_boundary[task_id]
+            update_task_anchors(self, self.cur_task, clip_video_features, text_guide_features)
         else:
             image_sim = []
             text_sim = []

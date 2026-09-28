@@ -82,7 +82,8 @@ def forward(
         output = output.view(bsz, q_len, -1)
     else:
         qkv = qkv.reshape(bsz, q_len, -1)
-        qkv, indices, cu_q_lens, max_s = unpad_input(qkv, key_padding_mask)
+        # FlashAttention 2.8 also returns seqused; older versions return four values.
+        qkv, indices, cu_q_lens, max_s = unpad_input(qkv, key_padding_mask)[:4]
         qkv = qkv.view(-1, 3, self.num_heads, self.head_dim)
         output_unpad = flash_attn_unpadded_qkvpacked_func(
             qkv, cu_q_lens, max_s, 0.0, softmax_scale=None, causal=True

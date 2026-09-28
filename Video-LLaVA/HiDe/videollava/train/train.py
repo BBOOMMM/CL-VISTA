@@ -1107,6 +1107,15 @@ def train():
                     if training_args.bf16 and module.weight.dtype == torch.float32:
                         module = module.to(torch.bfloat16)
 
+    # Register the frozen text encoder before DeepSpeed installs partition hooks.
+    # Loading it lazily in the first forward leaves ZeRO-3 embeddings partitioned
+    # without the hooks that gather their full weights.
+    model.get_model().initialize_text_modules(model_args, fsdp=training_args.fsdp)
+    model.get_text_tower().to(
+        device=training_args.device,
+        dtype=torch.bfloat16 if training_args.bf16 else torch.float16,
+    )
+
     clip_tokenizer = transformers.AutoTokenizer.from_pretrained(
             model_args.text_tower,
             cache_dir=training_args.cache_dir,
@@ -1139,13 +1148,14 @@ def train():
     model.config.use_cache = True
 
     if training_args.lora_enable:
-        model.set_boundary_for_save()
         state_dict = get_peft_state_maybe_zero_3(
             model.named_parameters(), training_args.lora_bias
         )
         non_lora_state_dict = get_peft_state_non_lora_maybe_zero_3(
             model.named_parameters()
         )
+        from videollava.model.task_anchors import task_anchor_state_dict
+        non_lora_state_dict.update(task_anchor_state_dict(model))
         if training_args.local_rank == 0 or training_args.local_rank == -1:
             model.config.save_pretrained(training_args.output_dir)
             model.save_pretrained(training_args.output_dir, state_dict=state_dict)

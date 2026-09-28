@@ -25,6 +25,7 @@ from transformers import AutoConfig, AutoModelForCausalLM, \
 from transformers.modeling_outputs import CausalLMOutputWithPast
 
 from ..llava_arch import LlavaMetaModel, LlavaMetaForCausalLM
+from ..task_anchors import initialize_task_anchors, migrate_legacy_task_anchors
 
 
 class LlavaConfig(LlamaConfig):
@@ -54,21 +55,7 @@ class LlavaLlamaForCausalLM(LlamaForCausalLM, LlavaMetaForCausalLM):
         self.cur_task = 0
         self.expert_num = 8
 
-        # Initialize anchors
-        self.image_anchors = nn.ParameterList(
-            [nn.Parameter(0.1 * torch.randn(1, 1024)) for _ in range(10)]
-        )
-
-        self.text_anchors = nn.ParameterList(
-            [nn.Parameter(0.1 * torch.randn(1, 768)) for _ in range(10)]
-        )
-
-        self.image_boundary = nn.ParameterList(
-            [nn.Parameter(torch.ones(1, dtype=torch.bfloat16)) for _ in range(10)]
-            )
-        self.text_boundary = nn.ParameterList(
-            [nn.Parameter(torch.ones(1, dtype=torch.bfloat16)) for _ in range(10)]
-            )
+        initialize_task_anchors(self)
 
         self.expert_weight = [0., 0., 0., 0., 0., 0., 0., 0.]
 
@@ -76,24 +63,11 @@ class LlavaLlamaForCausalLM(LlamaForCausalLM, LlavaMetaForCausalLM):
         self.cur_task = cur_task
         self.expert_num = expert_num
 
-        for name, param in self.image_anchors.named_parameters():
-            param.requires_grad = True
-        
-        for name, param in self.text_anchors.named_parameters():
-            param.requires_grad = True
-
-    def set_boundary_for_save(self):
-        for name, param in self.image_boundary.named_parameters():
-            param.requires_grad = True
-        
-        for name, param in self.text_boundary.named_parameters():
-            param.requires_grad = True
-
-        for name, param in self.image_anchors.named_parameters():
-            param.requires_grad = True
-        
-        for name, param in self.text_anchors.named_parameters():
-            param.requires_grad = True
+    def _load_from_state_dict(self, state_dict, prefix, local_metadata, strict,
+                              missing_keys, unexpected_keys, error_msgs):
+        migrate_legacy_task_anchors(self, state_dict, prefix)
+        super()._load_from_state_dict(state_dict, prefix, local_metadata, strict,
+                                      missing_keys, unexpected_keys, error_msgs)
 
     def get_model(self):
         return self.model
