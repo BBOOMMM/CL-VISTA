@@ -1,0 +1,16 @@
+{
+  "gpu_num": 2,
+  "rank": 256,
+  "lora_alpha": 512,
+  "expert_num": 8,
+  "cur_task": 0,
+  "epoch": 1,
+  "batch_size": 1,
+  "grad_acc": 32,
+  "global_batch_size": 64,
+  "lr": 0.0001,
+  "projector_lr": 0.00001,
+  "smoke_max_steps": 2,
+  "smoke_grad_acc": 1,
+  "output_root": "/cache/hpc_user_alden/outputs/hide-videollava-counting"
+}

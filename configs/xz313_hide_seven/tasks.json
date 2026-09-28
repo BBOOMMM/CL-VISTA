@@ -1,0 +1,9 @@
+[
+  ["Counting", "Counting/json_row/train_data_20k.json"],
+  ["Traffic", "Traffic/json_row/train_data_30k.json"],
+  ["Movie", "Movie/train_json_row/movie_train_subtitle_30k.json"],
+  ["GUI", "GUI/json_row/train_data_30k.json"],
+  ["Science", "Science/json_row/train_data_30k.json"],
+  ["Sports", "Sports/json_row/train_data_30k.json"],
+  ["STAR", "STAR/json_row/train_data_25k.json"]
+]

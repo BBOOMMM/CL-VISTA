@@ -1,0 +1,16 @@
+{
+  "gpu_num": 4,
+  "rank": 256,
+  "lora_alpha": 512,
+  "expert_num": 8,
+  "cur_task": 0,
+  "epoch": 1,
+  "batch_size": 2,
+  "grad_acc": 8,
+  "global_batch_size": 64,
+  "lr": 0.0001,
+  "projector_lr": 0.00001,
+  "smoke_max_steps": 2,
+  "smoke_grad_acc": 8,
+  "output_root": "/cache/hpc_user_alden/outputs/hide-videollava-seven"
+}

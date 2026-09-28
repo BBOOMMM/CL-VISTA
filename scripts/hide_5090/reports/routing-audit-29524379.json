@@ -1,0 +1,131 @@
+{
+  "prediction_job": 29524379,
+  "training_job": 29503175,
+  "task_order": [
+    "Counting",
+    "Traffic",
+    "Movie",
+    "GUI",
+    "Science",
+    "Sports",
+    "STAR"
+  ],
+  "root": "/cache/hpc_user_alden/outputs/hide-hard-route-29503175-final",
+  "tasks": [
+    {
+      "task": "Counting",
+      "total": 2000,
+      "correct": 1937,
+      "accuracy_percent": 96.85,
+      "top2_accuracy_percent": 99.75,
+      "selected_expert_counts": [
+        1937,
+        20,
+        0,
+        5,
+        7,
+        28,
+        3
+      ]
+    },
+    {
+      "task": "Traffic",
+      "total": 2000,
+      "correct": 1974,
+      "accuracy_percent": 98.7,
+      "top2_accuracy_percent": 99.9,
+      "selected_expert_counts": [
+        14,
+        1974,
+        0,
+        7,
+        5,
+        0,
+        0
+      ]
+    },
+    {
+      "task": "Movie",
+      "total": 2000,
+      "correct": 2000,
+      "accuracy_percent": 100,
+      "top2_accuracy_percent": 100,
+      "selected_expert_counts": [
+        0,
+        0,
+        2000,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "task": "GUI",
+      "total": 2000,
+      "correct": 1986,
+      "accuracy_percent": 99.3,
+      "top2_accuracy_percent": 100,
+      "selected_expert_counts": [
+        1,
+        1,
+        0,
+        1986,
+        12,
+        0,
+        0
+      ]
+    },
+    {
+      "task": "Science",
+      "total": 2000,
+      "correct": 1848,
+      "accuracy_percent": 92.4,
+      "top2_accuracy_percent": 99.1,
+      "selected_expert_counts": [
+        91,
+        5,
+        0,
+        56,
+        1848,
+        0,
+        0
+      ]
+    },
+    {
+      "task": "Sports",
+      "total": 2000,
+      "correct": 1980,
+      "accuracy_percent": 99,
+      "top2_accuracy_percent": 99.8,
+      "selected_expert_counts": [
+        20,
+        0,
+        0,
+        0,
+        0,
+        1980,
+        0
+      ]
+    },
+    {
+      "task": "STAR",
+      "total": 2000,
+      "correct": 2000,
+      "accuracy_percent": 100,
+      "top2_accuracy_percent": 100,
+      "selected_expert_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2000
+      ]
+    }
+  ],
+  "total": 14000,
+  "correct": 13725,
+  "accuracy_percent": 98.03571428571429
+}

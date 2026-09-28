@@ -1,0 +1,5 @@
+{
+  "model_name": "/cache/hpc_user_alden/models/Video-LLaVA-7B-HiDe-video-only",
+  "vision_tower": "/cache/hpc_user_alden/models/LanguageBind_Video_merge",
+  "text_tower": "/cache/hpc_user_alden/models/clip-vit-large-patch14-336"
+}

@@ -1,0 +1,92 @@
+{
+  "node": "xz313",
+  "cuda_visible_devices": "",
+  "model": {
+    "model_name": "/cache/hpc_user_alden/models/Video-LLaVA-7B-HiDe-video-only",
+    "vision_tower": "/cache/hpc_user_alden/models/LanguageBind_Video_merge",
+    "text_tower": "/cache/hpc_user_alden/models/clip-vit-large-patch14-336"
+  },
+  "train": {
+    "gpu_num": 2,
+    "rank": 256,
+    "lora_alpha": 512,
+    "expert_num": 8,
+    "cur_task": 0,
+    "epoch": 1,
+    "batch_size": 1,
+    "grad_acc": 32,
+    "global_batch_size": 64,
+    "lr": 0.0001,
+    "projector_lr": 0.00001,
+    "smoke_max_steps": 2,
+    "smoke_grad_acc": 1,
+    "output_root": "/cache/hpc_user_alden/outputs/hide-videollava-counting"
+  },
+  "image_tower_disabled": true,
+  "frames_per_video": 8,
+  "annotations": {
+    "train_path": {
+      "records": 19700,
+      "unique_videos": 4377,
+      "sha256": "d35fb6812a871bab3d0283867df11078440247b1aeed47df5fa846095d5b9bc3"
+    },
+    "test_q_path": {
+      "records": 2000,
+      "unique_videos": 609,
+      "sha256": "d57dfbbc1781df992dc300f31408959884e1404d4e9e96259ce6943ce11ccdb7"
+    },
+    "test_a_path": {
+      "records": 2000,
+      "unique_videos": 0,
+      "sha256": "1a4c1faedbeed85bd5fba09bf436a403e7bea3baaaad1e6bebfee2967f448249"
+    }
+  },
+  "samples": [
+    {
+      "index": 0,
+      "video": "/cache/hpc_user_alden/datasets/CL-VISTA/Counting/youtube/2OeqPEW2FQY.mp4",
+      "pixel_shape": [
+        1,
+        3,
+        8,
+        224,
+        224
+      ],
+      "supervised_tokens": 3
+    },
+    {
+      "index": 9850,
+      "video": "/cache/hpc_user_alden/datasets/CL-VISTA/Counting/youtube/bWBVGBTy3_c.mp4",
+      "pixel_shape": [
+        1,
+        3,
+        8,
+        224,
+        224
+      ],
+      "supervised_tokens": 3
+    },
+    {
+      "index": 19699,
+      "video": "/cache/hpc_user_alden/datasets/CL-VISTA/Counting/youtube/bcj6N-cx2DY.mp4",
+      "pixel_shape": [
+        1,
+        3,
+        8,
+        224,
+        224
+      ],
+      "supervised_tokens": 3
+    }
+  ],
+  "weights_loaded_on_cpu": false,
+  "network_attempts": [],
+  "training_started": false,
+  "passed": true,
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "4.31.0",
+    "accelerate": "1.15.0",
+    "deepspeed": "0.19.7"
+  }
+}

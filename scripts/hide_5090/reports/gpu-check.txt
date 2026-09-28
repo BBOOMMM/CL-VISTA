@@ -1,0 +1,4 @@
+torch 2.11.0+cu130 CUDA 13.0
+GPU NVIDIA GeForce RTX 5090 capability (12, 0)
+architectures ['sm_75', 'sm_80', 'sm_86', 'sm_90', 'sm_100', 'sm_120']
+CUDA matmul/backward and SDPA/backward OK

@@ -1,0 +1,3 @@
+numpy==1.24.4
+setuptools<70
+huggingface-hub<1

@@ -1,0 +1,9 @@
+{
+  "train_path": "/home/alden/CL-VISTA/dataset/CL-VISTA/STAR/json_row/train_data_25k.json",
+  "replay_path": "/home/alden/CL-VISTA/dataset/CL-VISTA/STAR/json_row/replay_train.json",
+  "router_path": "/home/alden/CL-VISTA/dataset/CL-VISTA/STAR/json_row/router_data.json",
+  "test_q_path": "/home/alden/CL-VISTA/dataset/CL-VISTA/STAR/json_row/test_questions_2k.json",
+  "test_a_path": "/home/alden/CL-VISTA/dataset/CL-VISTA/STAR/json_row/test_answers_2k.json",
+  "train_folder": "/home/alden/CL-VISTA/dataset/CL-VISTA",
+  "test_folder": "/home/alden/CL-VISTA/dataset/CL-VISTA"
+}

@@ -1,0 +1,32 @@
+{
+  "torch": "2.11.0+cu130",
+  "torchvision": "0.26.0+cu130",
+  "torchaudio": "2.11.0+cu130",
+  "transformers": "4.31.0",
+  "tokenizers": "0.13.3",
+  "peft": "0.4.0",
+  "accelerate": "1.15.0",
+  "deepspeed": "0.19.7",
+  "bitsandbytes": "0.50.2",
+  "decord": "0.6.0",
+  "pytorchvideo": "0.1.5",
+  "flash-attn": "2.8.3.post1"
+}
+GPU: NVIDIA GeForce RTX 5090
+Python standard library imports OK
+Import OK: torchvision
+Import OK: torchaudio
+Import OK: deepspeed
+Import OK: peft
+Import OK: pytorchvideo.transforms
+Import OK: CoIN.peft
+Import OK: videollava.train.train_mem
+FlashAttention forward/backward OK: torch.float16
+FlashAttention forward/backward OK: torch.bfloat16
+HiDe attention forward/backward OK, padded: False
+HiDe attention forward/backward OK, padded: True
+bitsandbytes CUDA NF4 OK
+[93m [WARNING] [0m DeepSpeed Op Builder: Installed CUDA version 13.1 does not match the version torch was compiled with 13.0.Detected `DS_SKIP_CUDA_CHECK=1`: Allowing this combination of CUDA, but it may result in unexpected behavior.
+DeepSpeed CPUAdam extension OK
+PyAV encode / Decord decode OK
+ENVIRONMENT_VALIDATED_NO_TRAINING

@@ -1,0 +1,12 @@
+{
+  "node": "xz313",
+  "model_directory": "/cache/hpc_user_alden/models",
+  "source": "/user/t0/alden/models/cl-vista-videollava/20260926T060514Z",
+  "archive_sha256": "aca8896fcb09c8569996a8f3b2a6f0afe7b42fd956c2571e2ed1da18e7736770",
+  "per_file_sha256_verified": true,
+  "model_files": 24,
+  "gpu_used": false,
+  "external_downloads": false,
+  "configuration": "Upstream config preserved; destination-specific offline configuration not applied",
+  "training_started": false
+}

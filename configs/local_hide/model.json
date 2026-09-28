@@ -1,0 +1,5 @@
+{
+  "model_name": "/home/alden/CL-VISTA/models/Video-LLaVA-7B",
+  "vision_tower": "/home/alden/CL-VISTA/models/LanguageBind_Video_merge",
+  "text_tower": "/home/alden/CL-VISTA/models/clip-vit-large-patch14-336"
+}

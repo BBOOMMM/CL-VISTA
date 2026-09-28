@@ -1,0 +1,88 @@
+{
+  "job": 29502168,
+  "status": "COMPLETED",
+  "stages": [
+    {
+      "task": "00-Counting",
+      "image_count": 16,
+      "text_count": 16,
+      "image_anchor_change_l2": 22.233016967773438,
+      "text_anchor_change_l2": 17.21869468688965,
+      "losses": [
+        0.9127,
+        0.7119
+      ]
+    },
+    {
+      "task": "01-Traffic",
+      "image_count": 16,
+      "text_count": 16,
+      "image_anchor_change_l2": 25.348987579345703,
+      "text_anchor_change_l2": 18.500629425048828,
+      "losses": [
+        1.4563,
+        1.1104
+      ]
+    },
+    {
+      "task": "02-Movie",
+      "image_count": 16,
+      "text_count": 16,
+      "image_anchor_change_l2": 23.741395950317383,
+      "text_anchor_change_l2": 19.61224365234375,
+      "losses": [
+        0.3911,
+        0.2241
+      ]
+    },
+    {
+      "task": "03-GUI",
+      "image_count": 16,
+      "text_count": 16,
+      "image_anchor_change_l2": 22.927310943603516,
+      "text_anchor_change_l2": 20.382535934448242,
+      "losses": [
+        1.642,
+        1.7637
+      ]
+    },
+    {
+      "task": "04-Science",
+      "image_count": 16,
+      "text_count": 16,
+      "image_anchor_change_l2": 22.273357391357422,
+      "text_anchor_change_l2": 17.821128845214844,
+      "losses": [
+        1.6256,
+        1.1644
+      ]
+    },
+    {
+      "task": "05-Sports",
+      "image_count": 16,
+      "text_count": 16,
+      "image_anchor_change_l2": 25.976436614990234,
+      "text_anchor_change_l2": 20.918787002563477,
+      "losses": [
+        0.9202,
+        1.3658
+      ]
+    },
+    {
+      "task": "06-STAR",
+      "image_count": 16,
+      "text_count": 16,
+      "image_anchor_change_l2": 25.270063400268555,
+      "text_anchor_change_l2": 22.682735443115234,
+      "losses": [
+        0.451,
+        0.5146
+      ]
+    }
+  ],
+  "root": "/cache/hpc_user_alden/outputs/hide-anchor-smoke-job29502168",
+  "gpu_count": 4,
+  "per_gpu_batch": 2,
+  "gradient_accumulation": 1,
+  "steps_per_task": 2
+}
